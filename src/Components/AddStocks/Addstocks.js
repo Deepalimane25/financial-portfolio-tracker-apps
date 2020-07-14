@@ -31,7 +31,7 @@ class Addstocks extends Component {
         
         let companyArray=[];
         let showMessage="";
-            if(this.state.myCompanies.length>3)
+            if(this.state.myCompanies.length>=3)
             {
             companyArray=this.state.myCompanies.map((item,index)=>{
              const {symbol,name}= item;//Destructuring
