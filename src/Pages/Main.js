@@ -18,7 +18,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
      }
      //Initial retreival of stocks and companies
      componentDidMount(){
-        axios.get("https://finance-portfolio-tracke-11608.firebaseio.com/companies.json")
+        axios.get("https://financial-portfolio-tracker-25.firebaseio.com/companies.json")
         .then((response)=>{
             const updatedCompanies = [];
              for (let key in response.data)
