@@ -16,7 +16,7 @@ class ApiCall extends Component {
         let sym = symbol;
         let buy =buyprice;
         let sh = share;
-        const apikey="ZR6XE6LDR5HNZSYR";
+        const apikey="V5TOVOFKRMLMTAJX";
         const api_url=`https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${sym}&apikey=${apikey}`;
             axios.get(api_url)
             .then((response)=>{
