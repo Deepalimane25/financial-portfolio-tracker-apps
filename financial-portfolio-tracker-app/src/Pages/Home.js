@@ -18,7 +18,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
      }
      //Initial retreival of stocks and companies
      componentDidMount(){
-        axios.get("https://fin-tracker-ticker.firebaseio.com/tickers.json")//companies
+        axios.get("https://financial-portfolio-tracker-25.firebaseio.com/tickers.json")//companies
         .then((response)=>{
             const updatedCompanies = [];
              for (let key in response.data)
@@ -32,7 +32,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
         })
         .catch(error=>console.log(error));
 
-        axios.get("https://fin-tracker-ticker.firebaseio.com/addstocks.json")//mystocks
+        axios.get("https://financial-portfolio-tracker-25.firebaseio.com/addstocks.json")//mystocks
         .then((response)=>{
         if(response.data!=null)
          {  
@@ -52,7 +52,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
     //Function to get Final Stocks after addition.
     getFinalMystocks=()=>{
         console.log("Final myStocks update function called");
-        axios.get('https://fin-tracker-ticker.firebaseio.com/addstocks.json')
+        axios.get('https://financial-portfolio-tracker-25.firebaseio.com/addstocks.json')
             .then((response)=>{
                 const updatedMystocks = [];
                 for (let key in response.data)
@@ -68,7 +68,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
     //Function to get Final Companies after addition.        
     getFinalCompanies=()=>{
                 console.log("Final Companies update function called");
-                axios.get('https://fin-tracker-ticker.firebaseio.com/tickers.json')
+                axios.get('https://financial-portfolio-tracker-25.firebaseio.com/tickers.json')
                 .then((response)=>{
                 const updatedCompanies  = [];
                 for (let key in response.data)
@@ -90,7 +90,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
         let companyName=this.state.myStocks[index]["Company_name"];
         let companySymbol=this.state.myStocks[index]["Company_Symbol"];
             //Adding deleted stock to Companies database
-            axios.post('https://fin-tracker-ticker.firebaseio.com/tickers.json', {
+            axios.post('https://financial-portfolio-tracker-25.firebaseio.com/tickers.json', {
                 name:companyName,
                 symbol:companySymbol
                 })
@@ -103,7 +103,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
                 })
             .catch(error=>{console.log(error)})
             //Deleting stocks from my Stocks
-             axios.delete(`https://fin-tracker-ticker.firebaseio.com/addstocks/${id}.json`)
+             axios.delete(`https://financial-portfolio-tracker-25.firebaseio.com/addstocks/${id}.json`)
              .then((response)=>{
                 console.log(companySymbol,"Stock Deleted from Firebase");
                 if(response.statusText==="OK"){
@@ -143,7 +143,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
                     if(noofshares>0&&buyPrice.length>0&&buyDate.length>0)
                     {
                             //Adding stocks to my stocks
-                            axios.post('https://fin-tracker-ticker.firebaseio.com/addstocks.json', {
+                            axios.post('https://financial-portfolio-tracker-25.firebaseio.com/addstocks.json', {
                                 Company_Symbol:company_symbol,
                                 Company_name:company_name,
                                 No_of_Shares:noofshares,
@@ -160,7 +160,7 @@ import Addstocks from '../Components/AddStocks/Addstocks';
                             .catch(error=>console.log(error));
 
                             //Deleting Stocks from Companies 
-                            axios.delete(`https://fin-tracker-ticker.firebaseio.com/tickers/${id}.json`)
+                            axios.delete(`https://financial-portfolio-tracker-25.firebaseio.com/tickers/${id}.json`)
                             .then((response)=>{
                             console.log(company_symbol,"Stock Deleted from Firebase");
                             if(response.statusText==="OK"){
